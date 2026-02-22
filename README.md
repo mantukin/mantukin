@@ -24,7 +24,7 @@
 <tr>
 <td width="50%">
 
-#### <img src="https://raw.githubusercontent.com/mantukin/mantukin/main/repo_icons/Dx3_icon.png" width="28"> [Dx3 Controller](https://github.com/mantukin/dx3)
+#### <img src="repo_icons/Dx3_icon.png" width="28"> [Dx3 Controller](https://github.com/mantukin/dx3)
 
 Lightweight **DualSense → Xbox 360** converter & remapper for Windows. Only ~5 MB RAM, zero input latency, battery-friendly.
 
@@ -33,7 +33,7 @@ Lightweight **DualSense → Xbox 360** converter & remapper for Windows. Only ~5
 </td>
 <td width="50%">
 
-#### <img src="https://raw.githubusercontent.com/mantukin/mantukin/main/repo_icons/image_pinboard_icon.png" width="28"> [Image Pinboard](https://github.com/mantukin/image-pinboard)
+#### <img src="repo_icons/image_pinboard_icon.png" width="28"> [Image Pinboard](https://github.com/mantukin/image-pinboard)
 
 A lightning-fast desktop workspace for reference images. Infinite canvas, drag & drop, always-on-top transparent overlays, annotations, color picking, and sticky notes.
 
@@ -87,7 +87,7 @@ Exocad-style edge-zone navigation. Roll & pan by dragging near viewport edges. I
 <tr>
 <td width="50%">
 
-#### <img src="https://raw.githubusercontent.com/mantukin/mantukin/main/repo_icons/audio_grabber_icon.png" width="28"> [AudioGrabber](https://github.com/mantukin/AudioGrabber)
+#### <img src="repo_icons/audio_grabber_icon.png" width="28"> [AudioGrabber](https://github.com/mantukin/AudioGrabber)
 
 Capture audio from any browser tab with automatic silence detection, waveform editing, looping, and high-quality WAV export. Works on all Chromium browsers.
 
@@ -96,7 +96,7 @@ Capture audio from any browser tab with automatic silence detection, waveform ed
 </td>
 <td width="50%">
 
-#### <img src="https://raw.githubusercontent.com/mantukin/mantukin/main/repo_icons/spotify_suggester_icon.png" width="28"> [Spotify Gemini Suggester](https://github.com/mantukin/spotify-gemini-suggester)
+#### <img src="repo_icons/spotify_suggester_icon.png" width="28"> [Spotify Gemini Suggester](https://github.com/mantukin/spotify-gemini-suggester)
 
 AI-powered music discovery using Google Gemini. Find tracks by mood, genre, decade, or natural language. Instant Spotify playback.
 
@@ -114,7 +114,7 @@ AI-powered music discovery using Google Gemini. Find tracks by mood, genre, deca
 <tr>
 <td width="50%">
 
-#### <img src="https://raw.githubusercontent.com/mantukin/mantukin/main/repo_icons/window_manager_icon.png" width="28"> [Window Manager](https://github.com/mantukin/window-manager)
+#### <img src="repo_icons/window_manager_icon.png" width="28"> [Window Manager](https://github.com/mantukin/window-manager)
 
 Force borderless mode, auto-move apps to specific monitors, persistent per-app settings, background monitoring, system tray support.
 
@@ -123,7 +123,7 @@ Force borderless mode, auto-move apps to specific monitors, persistent per-app s
 </td>
 <td width="50%">
 
-#### <img src="https://raw.githubusercontent.com/mantukin/mantukin/main/repo_icons/word_OCR_icon.png" width="28"> [Word AI OCR](https://github.com/mantukin/word-ai-ocr)
+#### <img src="repo_icons/word_OCR_icon.png" width="28"> [Word AI OCR](https://github.com/mantukin/word-ai-ocr)
 
 Microsoft Word add-in for document layout reconstruction. Convert scans & photos into formatted Word documents via AI — **no API keys required**.
 
