@@ -158,10 +158,22 @@ Microsoft Word add-in for document layout reconstruction. Convert scans & photos
 
 <div align="center">
 
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=mantukin&theme=tokyonight" height="170" alt="GitHub Stats">
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=mantukin&theme=tokyonight" height="170" alt="Top Languages">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=mantukin&theme=tokyonight">
+  <source media="(prefers-color-scheme: light)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=mantukin&theme=default">
+  <img height="170" alt="GitHub Stats">
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=mantukin&theme=tokyonight">
+  <source media="(prefers-color-scheme: light)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=mantukin&theme=default">
+  <img height="170" alt="Top Languages">
+</picture>
 
-<img src="https://streak-stats.demolab.com/?user=mantukin&theme=tokyonight&hide_border=true&background=1a1b27" alt="GitHub Streak">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com/?user=mantukin&theme=tokyonight&hide_border=true&background=1a1b27">
+  <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com/?user=mantukin&theme=default&hide_border=true">
+  <img alt="GitHub Streak">
+</picture>
 
 </div>
 
