@@ -1,6 +1,6 @@
 <div align="center">
 
-# This is IPD Workshop 🛠️
+<img src="repo_icons/IPD_pixel_logo2.svg" alt="IPD Workshop" width="720">
 
 ### **I**gor **P**arfenov **D**esign — designing useful things, big and small.
 
