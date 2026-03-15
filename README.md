@@ -2,7 +2,7 @@
 
 <img src="repo_icons/IPD_pixel_logo2.svg" alt="IPD Workshop" width="720">
 
-### **I**gor **P**arfenov **D**esign — designing useful things, big and small.
+### Designing useful things, big and small.
 
 *Tools that solve real problems — native desktop apps, 3D modeling addons, browser extensions, and AI-powered utilities.*
 
