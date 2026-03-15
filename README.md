@@ -131,6 +131,17 @@ Microsoft Word add-in for document layout reconstruction. Convert scans & photos
 
 </td>
 </tr>
+<tr>
+<td colspan="2">
+
+<h4 align="center"><a href="https://github.com/mantukin/shakalfx"><img src="repo_icons/shakalFX_icon.svg" width="48"></a><br><br><a href="https://github.com/mantukin/shakalfx">ShakalFX</a></h4>
+
+Retro-styled browser app for ASCII conversion, dithering, glitch effects, and animated GIF exports. <a href="https://mantukin.github.io/shakalfx/">Open live app</a>.
+
+`React` `Vite` `Canvas` `Web Workers`
+
+</td>
+</tr>
 </table>
 
 ---
