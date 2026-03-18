@@ -132,13 +132,22 @@ Microsoft Word add-in for document layout reconstruction. Convert scans & photos
 </td>
 </tr>
 <tr>
-<td colspan="2">
+<td width="50%">
 
 <h4 align="center"><a href="https://github.com/mantukin/shakalfx"><img src="repo_icons/shakalFX_icon.svg" width="48"></a><br><br><a href="https://github.com/mantukin/shakalfx">ShakalFX</a></h4>
 
 Retro-styled browser app for ASCII conversion, dithering, glitch effects, and animated GIF exports. <a href="https://mantukin.github.io/shakalfx/">Open live app</a>.
 
 `React` `Vite` `Canvas` `Web Workers`
+
+</td>
+<td width="50%">
+
+<h4 align="center"><a href="https://github.com/mantukin/PDFill"><img src="repo_icons/PDFill_icon.png" width="48"></a><br><br><a href="https://github.com/mantukin/PDFill">PDFill</a></h4>
+
+Visual editor and CLI for designing, aligning, and exporting fillable PDF form fields with grid snapping, multi-page workflows, and batch processing.
+
+`Python` `PySide6` `PyMuPDF` `CLI`
 
 </td>
 </tr>
