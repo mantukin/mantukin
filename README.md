@@ -108,7 +108,7 @@ AI-powered music discovery using Google Gemini. Find tracks by mood, genre, deca
 
 ---
 
-### 🕸️ Web Apps
+### 🖱️ Web Apps
 
 <table>
 <tr>
