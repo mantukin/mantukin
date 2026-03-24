@@ -108,6 +108,33 @@ AI-powered music discovery using Google Gemini. Find tracks by mood, genre, deca
 
 ---
 
+### 🕸️ Web Apps
+
+<table>
+<tr>
+<td width="50%">
+
+<h4 align="center"><a href="https://github.com/mantukin/shakalfx"><img src="repo_icons/shakalFX_icon.svg" width="48"></a><br><br><a href="https://github.com/mantukin/shakalfx">ShakalFX</a></h4>
+
+Retro-styled browser app for ASCII conversion, dithering, glitch effects, and animated GIF exports. <a href="https://mantukin.github.io/shakalfx/">Open live app</a>.
+
+`React` `Vite` `Canvas` `Web Workers`
+
+</td>
+<td width="50%">
+
+<h4 align="center"><a href="https://github.com/mantukin/motif"><img src="repo_icons/motif_icon.png" width="48"></a><br><br><a href="https://github.com/mantukin/motif">Motif</a></h4>
+
+AI-assisted MIDI composition and sequencing app with piano roll editing, drum sequencing, voice melody + karaoke workflow, and audio-to-MIDI transcription for building ideas before finishing them in a DAW. <a href="https://mantukin.github.io/motif/">Open live app</a>.
+
+`React` `TypeScript` `Tone.js` `Basic Pitch`
+
+</td>
+</tr>
+ </table>
+
+---
+
 ### 🛠️ Utilities
 
 <table>
@@ -132,16 +159,7 @@ Microsoft Word add-in for document layout reconstruction. Convert scans & photos
 </td>
 </tr>
 <tr>
-<td width="50%">
-
-<h4 align="center"><a href="https://github.com/mantukin/shakalfx"><img src="repo_icons/shakalFX_icon.svg" width="48"></a><br><br><a href="https://github.com/mantukin/shakalfx">ShakalFX</a></h4>
-
-Retro-styled browser app for ASCII conversion, dithering, glitch effects, and animated GIF exports. <a href="https://mantukin.github.io/shakalfx/">Open live app</a>.
-
-`React` `Vite` `Canvas` `Web Workers`
-
-</td>
-<td width="50%">
+<td colspan="2">
 
 <h4 align="center"><a href="https://github.com/mantukin/PDFill"><img src="repo_icons/PDFill_icon.png" width="48"></a><br><br><a href="https://github.com/mantukin/PDFill">PDFill</a></h4>
 
