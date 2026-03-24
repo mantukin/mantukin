@@ -6,7 +6,7 @@
 
 *Tools that solve real problems — native desktop apps, 3D modeling addons, browser extensions, and AI-powered utilities.*
 
-[![GitHub](https://img.shields.io/badge/GitHub-mantukin-181717?style=for-the-badge&logo=github)](https://github.com/mantukin)
+[![GitHub](repo_icons/github-badge.svg)](https://github.com/mantukin)
 
 ---
 
@@ -179,14 +179,14 @@ Visual editor and CLI for designing, aligning, and exporting fillable PDF form f
 
 <div align="center">
 
-![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
-![Tauri](https://img.shields.io/badge/Tauri-24C8D8?style=for-the-badge&logo=tauri&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![Blender](https://img.shields.io/badge/Blender-E87D0D?style=for-the-badge&logo=blender&logoColor=white)
+![Rust](repo_icons/tech-stack-badges/rust.svg)
+![Tauri](repo_icons/tech-stack-badges/tauri.svg)
+![Python](repo_icons/tech-stack-badges/python.svg)
+![TypeScript](repo_icons/tech-stack-badges/typescript.svg)
+![JavaScript](repo_icons/tech-stack-badges/javascript.svg)
+![HTML5](repo_icons/tech-stack-badges/html5.svg)
+![CSS3](repo_icons/tech-stack-badges/css3.svg)
+![Blender](repo_icons/tech-stack-badges/blender.svg)
 
 </div>
 
@@ -196,22 +196,10 @@ Visual editor and CLI for designing, aligning, and exporting fillable PDF form f
 
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=mantukin&theme=tokyonight">
-  <source media="(prefers-color-scheme: light)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=mantukin&theme=default">
-  <img height="170" alt="GitHub Stats">
-</picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=mantukin&theme=tokyonight">
-  <source media="(prefers-color-scheme: light)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=mantukin&theme=default">
-  <img height="170" alt="Top Languages">
-</picture>
+<img src="repo_icons/github-stats/stats.svg" height="170" alt="GitHub Stats">
+<img src="repo_icons/github-stats/languages.svg" height="170" alt="Top Languages">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com/?user=mantukin&theme=tokyonight&hide_border=true&background=1a1b27">
-  <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com/?user=mantukin&theme=default&hide_border=true">
-  <img alt="GitHub Streak">
-</picture>
+<img src="repo_icons/github-stats/streak.svg" alt="GitHub Streak">
 
 </div>
 
