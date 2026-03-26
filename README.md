@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="repo_icons/IPD_pixel_logo2.svg" alt="IPD Workshop" width="720">
-
-### Designing useful things, big and small.
+<img src="repo_icons/IPD_pixel_logo3.svg" alt="IPD Workshop" width="720">
 
 *Tools that solve real problems — native desktop apps, 3D modeling addons, browser extensions, and AI-powered utilities.*
 
