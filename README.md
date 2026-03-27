@@ -1,6 +1,10 @@
 <div align="center">
 
-<img src="repo_icons/IPD_pixel_logo3.svg" alt="IPD Workshop" width="720">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="repo_icons/IPD_pixel_logo3.svg">
+  <source media="(prefers-color-scheme: light)" srcset="repo_icons/IPD_pixel_logo3-light.svg">
+  <img src="repo_icons/IPD_pixel_logo3-light.svg" alt="IPD Workshop" width="720">
+</picture>
 
 *Tools that solve real problems — native desktop apps, 3D modeling addons, browser extensions, and AI-powered utilities.*
 
@@ -194,10 +198,22 @@ Visual editor and CLI for designing, aligning, and exporting fillable PDF form f
 
 <div align="center">
 
-<img src="repo_icons/github-stats/stats.svg" height="170" alt="GitHub Stats">
-<img src="repo_icons/github-stats/languages.svg" height="170" alt="Top Languages">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="repo_icons/github-stats/stats.svg">
+  <source media="(prefers-color-scheme: light)" srcset="repo_icons/github-stats/stats-light.svg">
+  <img src="repo_icons/github-stats/stats-light.svg" height="170" alt="GitHub Stats">
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="repo_icons/github-stats/languages.svg">
+  <source media="(prefers-color-scheme: light)" srcset="repo_icons/github-stats/languages-light.svg">
+  <img src="repo_icons/github-stats/languages-light.svg" height="170" alt="Top Languages">
+</picture>
 
-<img src="repo_icons/github-stats/streak.svg" alt="GitHub Streak">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="repo_icons/github-stats/streak.svg">
+  <source media="(prefers-color-scheme: light)" srcset="repo_icons/github-stats/streak-light.svg">
+  <img src="repo_icons/github-stats/streak-light.svg" alt="GitHub Streak">
+</picture>
 
 </div>
 

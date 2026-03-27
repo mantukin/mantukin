@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="isolation: isolate; font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', sans-serif;" viewBox="0 0 495 195" width="495" height="195" direction="ltr" role="img" aria-label="GitHub streak overview">
   <g>
     <g style="isolation: isolate">
-      <rect stroke="#000000" stroke-opacity="0" fill="#1a1b27" rx="4.5" x="0.5" y="0.5" width="494" height="194"></rect>
+      <rect stroke="#1a1b27" stroke-opacity="1" fill="#1a1b27" rx="4.5" x="0.5" y="0.5" width="494" height="194"></rect>
     </g>
     <g style="isolation: isolate">
       <line x1="165" y1="28" x2="165" y2="170" vector-effect="non-scaling-stroke" stroke-width="1" stroke="#E4E2E2" stroke-linejoin="miter" stroke-linecap="square" stroke-miterlimit="3"></line>

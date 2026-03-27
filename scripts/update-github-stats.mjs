@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const USERNAME = process.env.GITHUB_STATS_USER || "mantukin";
@@ -6,8 +6,46 @@ const TOKEN = process.env.GITHUB_TOKEN || process.env.GITHUB_STATS_TOKEN || proc
 const OUTPUT_DIR = path.resolve(process.cwd(), "repo_icons", "github-stats");
 const SNAPSHOT_FILE = path.join(OUTPUT_DIR, "snapshot.json");
 const STATS_FILE = path.join(OUTPUT_DIR, "stats.svg");
+const STATS_LIGHT_FILE = path.join(OUTPUT_DIR, "stats-light.svg");
 const LANGUAGES_FILE = path.join(OUTPUT_DIR, "languages.svg");
+const LANGUAGES_LIGHT_FILE = path.join(OUTPUT_DIR, "languages-light.svg");
 const STREAK_FILE = path.join(OUTPUT_DIR, "streak.svg");
+const STREAK_LIGHT_FILE = path.join(OUTPUT_DIR, "streak-light.svg");
+
+const THEMES = Object.freeze({
+  dark: Object.freeze({
+    cardBg: "#1a1b27",
+    cardBorder: "#1a1b27",
+    title: "#70a5fd",
+    label: "#38bdae",
+    value: "#38bdae",
+    icon: "#bf91f3",
+    legendText: "#38bdae",
+    divider: "#E4E2E2",
+    primaryNumber: "#70A5FD",
+    primaryTitle: "#70A5FD",
+    highlightTitle: "#BF91F3",
+    metaText: "#38BDAE",
+    ring: "#70A5FD",
+    fire: "#70A5FD",
+  }),
+  light: Object.freeze({
+    cardBg: "#ffffff",
+    cardBorder: "#d0d7de",
+    title: "#0969da",
+    label: "#57606a",
+    value: "#1f2328",
+    icon: "#8250df",
+    legendText: "#1f2328",
+    divider: "#d8dee4",
+    primaryNumber: "#0969da",
+    primaryTitle: "#57606a",
+    highlightTitle: "#8250df",
+    metaText: "#57606a",
+    ring: "#0969da",
+    fire: "#bc4c00",
+  }),
+});
 
 const STATS_CARD_ICON_PATHS = Object.freeze([
   {
@@ -37,10 +75,6 @@ const STATS_GITHUB_MARK_PATH =
 
 const STREAK_FIRE_PATH =
   "M 1.5 0.67 C 1.5 0.67 2.24 3.32 2.24 5.47 C 2.24 7.53 0.89 9.2 -1.17 9.2 C -3.23 9.2 -4.79 7.53 -4.79 5.47 L -4.76 5.11 C -6.78 7.51 -8 10.62 -8 13.99 C -8 18.41 -4.42 22 0 22 C 4.42 22 8 18.41 8 13.99 C 8 8.6 5.41 3.79 1.5 0.67 Z M -0.29 19 C -2.07 19 -3.51 17.6 -3.51 15.86 C -3.51 14.24 -2.46 13.1 -0.7 12.74 C 1.07 12.38 2.9 11.53 3.92 10.16 C 4.31 11.45 4.51 12.81 4.51 14.2 C 4.51 16.85 2.36 19 -0.29 19 Z";
-
-if (!TOKEN) {
-  throw new Error("Missing GITHUB_TOKEN or GITHUB_STATS_TOKEN for GitHub stats generation.");
-}
 
 async function githubGraphQL(query, variables = {}) {
   const response = await fetch("https://api.github.com/graphql", {
@@ -461,7 +495,7 @@ async function generateSnapshot() {
   };
 }
 
-function buildStatsOverviewSvg(snapshot) {
+function buildStatsOverviewSvg(snapshot, theme) {
   const rows = [
     { label: "Total Stars:", value: formatStatNumber(snapshot.stats.totalStars) },
     { label: `${snapshot.year} Commits:`, value: formatStatNumber(snapshot.stats.yearCommits) },
@@ -471,25 +505,25 @@ function buildStatsOverviewSvg(snapshot) {
   ];
   const iconMarkup = STATS_CARD_ICON_PATHS.map((icon, index) => {
     const offset = (index * 25.2).toFixed(1).replace(/\.0$/, "");
-    return `<g transform="translate(0,${offset})" width="14" height="14" fill="#bf91f3"><path fill-rule="${icon.fillRule}" d="${icon.path}"></path></g>`;
+    return `<g transform="translate(0,${offset})" width="14" height="14" fill="${theme.icon}"><path fill-rule="${icon.fillRule}" d="${icon.path}"></path></g>`;
   }).join("");
   const labelMarkup = rows
     .map((row, index) => {
       const y = 14 + index * 25.2;
-      return `<text x="21" y="${y}" style="fill: #38bdae; font-size: 14px;">${escapeSvgText(row.label)}</text>`;
+      return `<text x="21" y="${y}" style="fill: ${theme.label}; font-size: 14px;">${escapeSvgText(row.label)}</text>`;
     })
     .join("");
   const valueMarkup = rows
     .map((row, index) => {
       const y = 14 + index * 25.2;
-      return `<text x="130" y="${y}" style="fill: #38bdae; font-size: 14px;">${escapeSvgText(row.value)}</text>`;
+      return `<text x="130" y="${y}" style="fill: ${theme.value}; font-size: 14px;">${escapeSvgText(row.value)}</text>`;
     })
     .join("");
 
   return `
 <svg xmlns="http://www.w3.org/2000/svg" width="340" height="200" viewBox="0 0 340 200" role="img" aria-label="GitHub stats overview" style="font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', sans-serif;">
-  <rect x="1" y="1" rx="5" ry="5" height="99%" width="99.41176470588235%" stroke="#1a1b27" stroke-width="1" fill="#1a1b27" stroke-opacity="1"></rect>
-  <text x="30" y="40" style="font-size: 22px; fill: #70a5fd;">Stats</text>
+  <rect x="1" y="1" rx="5" ry="5" height="99%" width="99.41176470588235%" stroke="${theme.cardBorder}" stroke-width="1" fill="${theme.cardBg}" stroke-opacity="1"></rect>
+  <text x="30" y="40" style="font-size: 22px; fill: ${theme.title};">Stats</text>
   <g transform="translate(0,40)">
     <g transform="translate(30,20)">
       ${iconMarkup}
@@ -497,7 +531,7 @@ function buildStatsOverviewSvg(snapshot) {
       ${valueMarkup}
     </g>
     <g transform="translate(220,20)">
-      <g transform="scale(6)" style="fill: #bf91f3;">
+      <g transform="scale(6)" style="fill: ${theme.icon};">
         <path fill-rule="evenodd" d="${STATS_GITHUB_MARK_PATH}"></path>
       </g>
     </g>
@@ -505,7 +539,7 @@ function buildStatsOverviewSvg(snapshot) {
 </svg>`.trim();
 }
 
-function buildLanguageCardSvg(snapshot) {
+function buildLanguageCardSvg(snapshot, theme) {
   const languages = snapshot.languages.slice(0, 5);
   const displayLanguages = languages.length
     ? languages
@@ -517,7 +551,7 @@ function buildLanguageCardSvg(snapshot) {
     .map((language, index) => {
       const offset = index * 25.2;
       const labelY = 30 + index * 25.2;
-      return `<rect y="${18 + offset}" width="14" height="14" fill="${escapeSvgText(language.color)}" stroke="#1a1b27" style="stroke-width: 1px;"></rect><text x="16.8" y="${labelY}" style="fill: #38bdae; font-size: 14px;">${escapeSvgText(language.name)}</text>`;
+      return `<rect y="${18 + offset}" width="14" height="14" fill="${escapeSvgText(language.color)}" stroke="${theme.cardBorder}" style="stroke-width: 1px;"></rect><text x="16.8" y="${labelY}" style="fill: ${theme.legendText}; font-size: 14px;">${escapeSvgText(language.name)}</text>`;
     })
     .join("");
 
@@ -531,14 +565,14 @@ function buildLanguageCardSvg(snapshot) {
       const startAngle = currentAngle;
       const endAngle = startAngle + safeShare * 360;
       currentAngle = endAngle;
-      return `<g class="arc"><path d="${describeDonutSegment(startAngle, endAngle, 60, 35)}" style="fill: ${escapeSvgText(language.color)}; stroke-width: 2px;" stroke="#1a1b27"></path></g>`;
+      return `<g class="arc"><path d="${describeDonutSegment(startAngle, endAngle, 60, 35)}" style="fill: ${escapeSvgText(language.color)}; stroke-width: 2px;" stroke="${theme.cardBg}"></path></g>`;
     })
     .join("");
 
   return `
 <svg xmlns="http://www.w3.org/2000/svg" width="340" height="200" viewBox="0 0 340 200" role="img" aria-label="GitHub languages overview" style="font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', sans-serif;">
-  <rect x="1" y="1" rx="5" ry="5" height="99%" width="99.41176470588235%" stroke="#1a1b27" stroke-width="1" fill="#1a1b27" stroke-opacity="1"></rect>
-  <text x="30" y="40" style="font-size: 22px; fill: #70a5fd;">Top Languages by Repo</text>
+  <rect x="1" y="1" rx="5" ry="5" height="99%" width="99.41176470588235%" stroke="${theme.cardBorder}" stroke-width="1" fill="${theme.cardBg}" stroke-opacity="1"></rect>
+  <text x="30" y="40" style="font-size: 22px; fill: ${theme.title};">Top Languages by Repo</text>
   <g transform="translate(0,40)">
     <g transform="translate(40,0)">
       ${legendMarkup}
@@ -550,7 +584,7 @@ function buildLanguageCardSvg(snapshot) {
 </svg>`.trim();
 }
 
-function buildCommitRunSvg(snapshot) {
+function buildCommitRunSvg(snapshot, theme) {
   const totalCommits = formatStatNumber(snapshot.commits.total);
   const totalRange = snapshot.commits.since
     ? `${formatLongDate(snapshot.commits.since)} - Present`
@@ -563,71 +597,95 @@ function buildCommitRunSvg(snapshot) {
 <svg xmlns="http://www.w3.org/2000/svg" style="isolation: isolate; font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', sans-serif;" viewBox="0 0 495 195" width="495" height="195" direction="ltr" role="img" aria-label="GitHub streak overview">
   <g>
     <g style="isolation: isolate">
-      <rect stroke="#000000" stroke-opacity="0" fill="#1a1b27" rx="4.5" x="0.5" y="0.5" width="494" height="194"></rect>
+      <rect stroke="${theme.cardBorder}" stroke-opacity="1" fill="${theme.cardBg}" rx="4.5" x="0.5" y="0.5" width="494" height="194"></rect>
     </g>
     <g style="isolation: isolate">
-      <line x1="165" y1="28" x2="165" y2="170" vector-effect="non-scaling-stroke" stroke-width="1" stroke="#E4E2E2" stroke-linejoin="miter" stroke-linecap="square" stroke-miterlimit="3"></line>
-      <line x1="330" y1="28" x2="330" y2="170" vector-effect="non-scaling-stroke" stroke-width="1" stroke="#E4E2E2" stroke-linejoin="miter" stroke-linecap="square" stroke-miterlimit="3"></line>
+      <line x1="165" y1="28" x2="165" y2="170" vector-effect="non-scaling-stroke" stroke-width="1" stroke="${theme.divider}" stroke-linejoin="miter" stroke-linecap="square" stroke-miterlimit="3"></line>
+      <line x1="330" y1="28" x2="330" y2="170" vector-effect="non-scaling-stroke" stroke-width="1" stroke="${theme.divider}" stroke-linejoin="miter" stroke-linecap="square" stroke-miterlimit="3"></line>
     </g>
     <g style="isolation: isolate">
       <g transform="translate(82.5, 48)">
-        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#70A5FD" stroke="none" font-weight="700" font-size="28px" font-style="normal">${escapeSvgText(totalCommits)}</text>
+        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="${theme.primaryNumber}" stroke="none" font-weight="700" font-size="28px" font-style="normal">${escapeSvgText(totalCommits)}</text>
       </g>
       <g transform="translate(82.5, 84)">
-        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#70A5FD" stroke="none" font-weight="400" font-size="14px" font-style="normal">Total Contributions</text>
+        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="${theme.primaryTitle}" stroke="none" font-weight="400" font-size="14px" font-style="normal">Total Contributions</text>
       </g>
       <g transform="translate(82.5, 114)">
-        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#38BDAE" stroke="none" font-weight="400" font-size="12px" font-style="normal">${escapeSvgText(totalRange)}</text>
+        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="${theme.metaText}" stroke="none" font-weight="400" font-size="12px" font-style="normal">${escapeSvgText(totalRange)}</text>
       </g>
     </g>
     <g style="isolation: isolate">
       <g transform="translate(247.5, 108)">
-        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#BF91F3" stroke="none" font-weight="700" font-size="14px" font-style="normal">Current Streak</text>
+        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="${theme.highlightTitle}" stroke="none" font-weight="700" font-size="14px" font-style="normal">Current Streak</text>
       </g>
       <g transform="translate(247.5, 145)">
-        <text x="0" y="21" stroke-width="0" text-anchor="middle" fill="#38BDAE" stroke="none" font-weight="400" font-size="12px" font-style="normal">${escapeSvgText(currentRange)}</text>
+        <text x="0" y="21" stroke-width="0" text-anchor="middle" fill="${theme.metaText}" stroke="none" font-weight="400" font-size="12px" font-style="normal">${escapeSvgText(currentRange)}</text>
       </g>
-      <path d="${streakRingPath}" fill="none" stroke="#70A5FD" stroke-width="5" stroke-linecap="round"></path>
+      <path d="${streakRingPath}" fill="none" stroke="${theme.ring}" stroke-width="5" stroke-linecap="round"></path>
       <g transform="translate(247.5, 19.5)" stroke-opacity="0">
         <path d="M -12 -0.5 L 15 -0.5 L 15 23.5 L -12 23.5 L -12 -0.5 Z" fill="none"></path>
-        <path d="${STREAK_FIRE_PATH}" fill="#70A5FD" stroke-opacity="0"></path>
+        <path d="${STREAK_FIRE_PATH}" fill="${theme.fire}" stroke-opacity="0"></path>
       </g>
       <g transform="translate(247.5, 48)">
-        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#BF91F3" stroke="none" font-weight="700" font-size="28px" font-style="normal">${escapeSvgText(snapshot.commits.current.length)}</text>
+        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="${theme.highlightTitle}" stroke="none" font-weight="700" font-size="28px" font-style="normal">${escapeSvgText(snapshot.commits.current.length)}</text>
       </g>
     </g>
     <g style="isolation: isolate">
       <g transform="translate(412.5, 48)">
-        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#70A5FD" stroke="none" font-weight="700" font-size="28px" font-style="normal">${escapeSvgText(snapshot.commits.longest.length)}</text>
+        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="${theme.primaryNumber}" stroke="none" font-weight="700" font-size="28px" font-style="normal">${escapeSvgText(snapshot.commits.longest.length)}</text>
       </g>
       <g transform="translate(412.5, 84)">
-        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#70A5FD" stroke="none" font-weight="400" font-size="14px" font-style="normal">Longest Streak</text>
+        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="${theme.primaryTitle}" stroke="none" font-weight="400" font-size="14px" font-style="normal">Longest Streak</text>
       </g>
       <g transform="translate(412.5, 114)">
-        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#38BDAE" stroke="none" font-weight="400" font-size="12px" font-style="normal">${escapeSvgText(longestRange)}</text>
+        <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="${theme.metaText}" stroke="none" font-weight="400" font-size="12px" font-style="normal">${escapeSvgText(longestRange)}</text>
       </g>
     </g>
   </g>
 </svg>`.trim();
 }
 
+async function loadExistingSnapshot() {
+  const raw = await readFile(SNAPSHOT_FILE, "utf8");
+  const payload = JSON.parse(raw);
+
+  if (!payload?.data) {
+    throw new Error(`Snapshot file ${SNAPSHOT_FILE} does not contain a data payload.`);
+  }
+
+  return payload.data;
+}
+
 async function main() {
-  const snapshot = await generateSnapshot();
-  const payload = {
-    generatedAt: new Date().toISOString(),
-    source: "github-public-graph+graphql",
-    data: snapshot,
-  };
+  const shouldRefreshSnapshot = Boolean(TOKEN);
+  const snapshot = shouldRefreshSnapshot ? await generateSnapshot() : await loadExistingSnapshot();
 
   await mkdir(OUTPUT_DIR, { recursive: true });
-  await Promise.all([
-    writeFile(SNAPSHOT_FILE, JSON.stringify(payload, null, 2) + "\n", "utf8"),
-    writeFile(STATS_FILE, buildStatsOverviewSvg(snapshot) + "\n", "utf8"),
-    writeFile(LANGUAGES_FILE, buildLanguageCardSvg(snapshot) + "\n", "utf8"),
-    writeFile(STREAK_FILE, buildCommitRunSvg(snapshot) + "\n", "utf8"),
-  ]);
+  const writes = [
+    writeFile(STATS_FILE, buildStatsOverviewSvg(snapshot, THEMES.dark) + "\n", "utf8"),
+    writeFile(STATS_LIGHT_FILE, buildStatsOverviewSvg(snapshot, THEMES.light) + "\n", "utf8"),
+    writeFile(LANGUAGES_FILE, buildLanguageCardSvg(snapshot, THEMES.dark) + "\n", "utf8"),
+    writeFile(LANGUAGES_LIGHT_FILE, buildLanguageCardSvg(snapshot, THEMES.light) + "\n", "utf8"),
+    writeFile(STREAK_FILE, buildCommitRunSvg(snapshot, THEMES.dark) + "\n", "utf8"),
+    writeFile(STREAK_LIGHT_FILE, buildCommitRunSvg(snapshot, THEMES.light) + "\n", "utf8"),
+  ];
 
-  console.log(`Updated ${OUTPUT_DIR}`);
+  if (shouldRefreshSnapshot) {
+    const payload = {
+      generatedAt: new Date().toISOString(),
+      source: "github-public-graph+graphql",
+      data: snapshot,
+    };
+    writes.unshift(writeFile(SNAPSHOT_FILE, JSON.stringify(payload, null, 2) + "\n", "utf8"));
+  }
+
+  await Promise.all(writes);
+
+  console.log(
+    shouldRefreshSnapshot
+      ? `Updated ${OUTPUT_DIR}`
+      : `Updated themed SVG assets in ${OUTPUT_DIR} from existing snapshot`
+  );
 }
 
 main().catch((error) => {
