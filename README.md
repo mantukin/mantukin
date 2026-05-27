@@ -24,7 +24,7 @@
 
 <table>
 <tr>
-<td width="50%">
+<td width="33%">
 
 <h4 align="center"><a href="https://github.com/mantukin/dx3"><img src="repo_icons/Dx3_icon.png" width="48"></a><br><br><a href="https://github.com/mantukin/dx3">Dx3 Controller</a></h4>
 
@@ -33,13 +33,22 @@ Lightweight **DualSense → Xbox 360** converter & remapper for Windows. Only ~5
 `Rust` `Tauri` `JavaScript`
 
 </td>
-<td width="50%">
+<td width="33%">
 
 <h4 align="center"><a href="https://github.com/mantukin/image-pinboard"><img src="repo_icons/image_pinboard_icon.png" width="48"></a><br><br><a href="https://github.com/mantukin/image-pinboard">Image Pinboard</a></h4>
 
 A lightning-fast desktop workspace for reference images. Infinite canvas, drag & drop, always-on-top transparent overlays, annotations, color picking, and sticky notes.
 
 `Rust` `Tauri` `JavaScript` `CSS`
+
+</td>
+<td width="33%">
+
+<h4 align="center"><a href="https://github.com/mantukin/DragNProp"><img src="repo_icons/dragNprop_icon.webp" width="48"></a><br><br><a href="https://github.com/mantukin/DragNProp">DragNProp</a></h4>
+
+Offline-first 3D asset manager and companion with native drag-and-drop support, recursive search, automatic previews, and local SQLite engine.
+
+`Rust` `Tauri` `Svelte` `SQLite`
 
 </td>
 </tr>
